@@ -1,37 +1,16 @@
 node {
-    def app
-
     stage('Clone repository') {
         /* Cloning the Repository to our Workspace */
 
         checkout scm
     }
+    node {
+        checkout scm
 
-    stage('Build image') {
-        /* This builds the actual image */
+        def customImage = docker.build("my-image:${env.BUILD_ID}")
 
-        /* app = docker.build("napps:latest")*/
-                        // Use the sh step to run the docker build command with sudo
-                        sh 'sudo docker build -t napps:latest .'
-
-
-    }
-
-    stage('Test image') {
-
-        app.inside {
-            echo "Tests passed"
+        customImage.inside {
+            sh 'make test'
         }
-    }
-
-    stage('Push image') {
-        /*
-			You would need to first register with DockerHub before you can push images to your account
-		*/
-        docker.withRegistry('https://registry.hub.docker.com', 'docker-hub') {
-            app.push("${env.BUILD_NUMBER}")
-            app.push("latest")
-            }
-                echo "Trying to Push Docker Build to DockerHub"
     }
 }
