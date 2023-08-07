@@ -2,7 +2,6 @@ pipeline {
     agent any
 
 stages{
-
     stage('Clone repository') {
         /* Cloning the Repository to our Workspace */
         checkout scm
@@ -16,8 +15,14 @@ stages{
                        sh 'sudo docker build . -t Napps/nodo-todo-app-test:latest'
                    }
     }
+}}
 
-   /* stage('Test image') {
+
+
+
+
+   /*
+   stage('Test image') {
         
         app.inside {
             echo "Tests passed"
@@ -36,5 +41,3 @@ stages{
                 echo "Trying to Push Docker Build to DockerHub"
     }
     */
-}
-}
