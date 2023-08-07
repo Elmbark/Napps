@@ -10,7 +10,9 @@ node {
     stage('Build image') {
         /* This builds the actual image */
 
-        app = docker.build("Napps")
+       /* app = docker.build("Napps")*/
+               app = docker.build("Napps", "-f . ")
+
     }
 
     stage('Test image') {
