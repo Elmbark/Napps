@@ -4,11 +4,10 @@ node {
 
         checkout scm
     }
-    node {
+    stage('build'){
         def customImage = docker.build("my-image")
         customImage.inside {
             sh 'make test'
-
         }
     }
 }
