@@ -1,9 +1,10 @@
-node {
-    def app
+pipeline {
+    agent any
+
+stages{
 
     stage('Clone repository') {
         /* Cloning the Repository to our Workspace */
-
         checkout scm
     }
 
@@ -11,8 +12,9 @@ node {
         /* This builds the actual image */
 
        /* app = docker.build("Napps")*/
-               app = docker.build("Napps", "-f . ")
-
+                   steps{
+                       sh 'sudo docker build . -t Napps/nodo-todo-app-test:latest'
+                   }
     }
 
     stage('Test image') {
@@ -32,4 +34,5 @@ node {
             } 
                 echo "Trying to Push Docker Build to DockerHub"
     }
+}
 }
