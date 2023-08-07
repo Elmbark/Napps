@@ -11,10 +11,9 @@ node {
         /* This builds the actual image */
 
         /* app = docker.build("napps:latest")*/
-                    steps {
                         // Use the sh step to run the docker build command with sudo
                         sh 'sudo docker build -t napps:latest .'
-                    }
+
     }
 
     stage('Test image') {
