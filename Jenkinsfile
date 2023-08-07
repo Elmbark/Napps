@@ -17,7 +17,7 @@ stages{
                    }
     }
 
-    stage('Test image') {
+   /* stage('Test image') {
         
         app.inside {
             echo "Tests passed"
@@ -33,6 +33,6 @@ stages{
             app.push("latest")
             } 
                 echo "Trying to Push Docker Build to DockerHub"
-    }
+    } */
 }
 }
