@@ -15,7 +15,8 @@ stages{
                        sh 'sudo docker build . -t Napps/nodo-todo-app-test:latest'
                    }
     }
-}}
+}
+}
 
 
 
