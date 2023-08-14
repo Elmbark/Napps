@@ -1,4 +1,5 @@
 node {
+    def customImage
     stage('Clone repository') {
         /* Cloning the Repository to our Workspace */
 
@@ -8,7 +9,7 @@ node {
         def customImage = docker.build("my-image")
     }
     stage('Test image') {
-            app.inside {
+            customImage.inside {
                 echo "Tests passed"
             }
 }
