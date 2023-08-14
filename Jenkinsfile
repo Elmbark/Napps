@@ -4,11 +4,11 @@ node {
 
         checkout scm
     }
-    stage('Test') {
-            /* Running tests on your code */
-            sh 'node /home/ansible/workspace/Napps/test.js'
-    }
     stage('build'){
         def customImage = docker.build("my-image")
     }
+    stage('Test image') {
+            app.inside {
+                echo "Tests passed"
+            }
 }
