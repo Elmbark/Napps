@@ -6,7 +6,7 @@ node {
     }
     stage('Test') {
             /* Running tests on your code */
-            sh 'node test.js'
+            sh 'node /home/ansible/workspace/Napps/test.js'
     }
     stage('build'){
         def customImage = docker.build("my-image")
