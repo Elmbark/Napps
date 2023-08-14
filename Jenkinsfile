@@ -7,7 +7,6 @@ node {
     stage('Test') {
             /* Running tests on your code */
             sh 'node test.js'
-
     }
     stage('build'){
         def customImage = docker.build("my-image")
